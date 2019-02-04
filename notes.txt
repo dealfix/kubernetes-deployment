@@ -1,0 +1,24 @@
+kubectl apply -f <directory> --- apply all documents --> kubectl apply -f k8s
+
+kuebctl logs server-deployment-6f4456759c-wlzs8 <--- name of the pod
+
+kubectl get storageclass --> options that kubernetes has to create persistent volumes
+kubectl describe storageclass
+
+kubectl get pv -> get persistent volumes
+kubectl get pvc -> get persistent volumes claims
+
+create secrets: kubectl create secret generic <secret name> --from-literal key=value (generic ** docker-registry ** tls)
+kubectl create secret generic pgpassword --from-literal PGPASSWORD=123456asdf
+
+
+Ingriss Nginx: https://kubernetes.github.io/ingress-nginx/deploy/#prerequisite-generic-deployment-command
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
+
+minikube addons enable ingress
+
+
+minikube ip
+minikube dashboard
+***
+PVC = Persistent Volume Claim = Advertise a possible storage option that can be attached to a Pod config
