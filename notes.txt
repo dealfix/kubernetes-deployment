@@ -22,3 +22,14 @@ minikube ip
 minikube dashboard
 ***
 PVC = Persistent Volume Claim = Advertise a possible storage option that can be attached to a Pod config
+
+
+
+
+** Deployment:
+to upload gcloud auth file to travis:
+
+docker run -it -v $(pwd):/app ruby:2.3 sh
+gem install travis
+travis
+travis encrypt-file service-account.json -r dealfix/kubernetes-deployment
