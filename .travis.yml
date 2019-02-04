@@ -18,10 +18,6 @@ before_install:
   - gcloud config set compute/zone europe-north1-a
   - gcloud container clusters get-credentials standard-cluster-1
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t hatrena/react-test -f ./client/Dockerfile.env ./client
-
-script:
-  - docker run hatrena/react-test npm run test -- --coverage
 
 deploy:
   provider: script
