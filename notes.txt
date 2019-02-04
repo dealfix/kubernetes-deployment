@@ -33,3 +33,15 @@ docker run -it -v $(pwd):/app ruby:2.3 sh
 gem install travis
 travis
 travis encrypt-file service-account.json -r dealfix/kubernetes-deployment
+
+Helm:
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > get_helm.sh
+chmod 700 get_helm.sh
+./get_helm.sh
+
+
+ServiceAccount:
+kubectl create serviceaccount --namespace kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+helm init --service-account tiller --upgrade
+helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
